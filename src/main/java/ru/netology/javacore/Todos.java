@@ -4,15 +4,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Todos {
-    protected List<String> allTasks;
-    protected int maxSizeAllTasks = 7;
+    protected TreeSet<String> allTasks;
+    protected static final int MAXSIZEALLTASKS = 7;
 
     public Todos() {
-        allTasks = new ArrayList<>();
+        allTasks = new TreeSet<>();
     }
 
     public void addTask(String task) {
-        if (allTasks.size() < maxSizeAllTasks) {
+        if (allTasks.size() < MAXSIZEALLTASKS) {
             allTasks.add(task);
         }
     }
@@ -23,12 +23,7 @@ public class Todos {
 
     public String getAllTasks() {
         String sortedAllTasks = this.allTasks.stream()
-                .sorted()
                 .collect(Collectors.joining(" "));
         return sortedAllTasks;
-    }
-
-    public int getMaxSizeAllTasks() {
-        return maxSizeAllTasks;
     }
 }

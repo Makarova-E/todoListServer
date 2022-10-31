@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class TodosTests {
 
@@ -15,7 +16,7 @@ public class TodosTests {
     @BeforeEach
     void setUp() {
         todos = new Todos();
-        List<String> list = new ArrayList<>();
+        TreeSet<String> list = new TreeSet<>();
         list.add("Пробежка");
         list.add("Акробатика");
         list.add("Учеба");
@@ -50,7 +51,7 @@ public class TodosTests {
     @Test
     @DisplayName("Проверка добавления задачи сверх лимита")
     void addTaskOverLimit() {
-        todos.maxSizeAllTasks = 3;
+        final int MAXSIZEALLTASKS = 3;
         int sizeListOfAllTasks = todos.allTasks.size();
         todos.addTask("Работа");
         Assertions.assertEquals(3, sizeListOfAllTasks);
